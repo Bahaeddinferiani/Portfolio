@@ -1,7 +1,28 @@
 <footer class="footer">
     <p>&copy; {{site.username}}</p>
-<script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=44182fd901055b39440eee6c7f3214d1aad59ab4'></script>
-<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/989909/t/3"></script>
+      <div class="website-counter"></div>
+      <script>
+        var counterContainer = document.querySelector(".website-counter");
+var resetButton = document.querySelector("#reset");
+var visitCount = localStorage.getItem("page_view");
+
+// Check if page_view entry is present
+if (visitCount) {
+  visitCount = Number(visitCount) + 1;
+  localStorage.setItem("page_view", visitCount);
+} else {
+  visitCount = 1;
+  localStorage.setItem("page_view", 1);
+}
+counterContainer.innerHTML = visitCount;
+
+// Adding onClick event listener
+resetButton.addEventListener("click", () => {
+  visitCount = 1;
+  localStorage.setItem("page_view", 1);
+  counterContainer.innerHTML = visitCount;
+});
+      </script>
 </footer>
 <script src="//cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="{{ "/assets/js/sweet-scroll.min.js" | prepend: site.baseurl }}"></script>
